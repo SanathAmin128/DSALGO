@@ -9,7 +9,7 @@ package Maths1;
  *
  * @author SANATH
  */
-public class palindrome_2
+public class palindrome_1
 {
      public boolean isPalindrome(int x) 
     {
