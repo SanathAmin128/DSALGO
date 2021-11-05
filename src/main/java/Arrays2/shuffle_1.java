@@ -9,7 +9,7 @@ package Arrays2;
  *
  * @author SANATH
  */
-public class shuffle1
+public class shuffle_1
 {
      public int[] shuffle(int[] nums, int n)
     {
