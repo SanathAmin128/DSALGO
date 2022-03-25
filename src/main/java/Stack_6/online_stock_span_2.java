@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Stack_6;
-
+import java.util.*;
 /**
  *
  * @author SANATH
@@ -12,7 +12,7 @@ package Stack_6;
 public class online_stock_span_2
 {
      Stack<int[]> s;
-    public StockSpanner() {
+    public online_stock_span_2() {
         s=new Stack<>();
     }
     
@@ -22,6 +22,6 @@ public class online_stock_span_2
               ans+=(s.pop()[1]);
         s.push(new int[]{price, ans});
         return ans;
-                
-        
+    }
 }
+   
