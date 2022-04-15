@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Recursion_7;
-
-import java.util.ArrayList;
-
+package Recursion_8;
+import java.util.*;
+//return the array resulting to sum
 /**
  *
  * @author SANATH
  */
-public class subsequence_sum_count_5_3
+public class subsequence_sum_5_1
 {
     public static void main(String[] args)
     
@@ -20,24 +19,29 @@ public class subsequence_sum_count_5_3
         ArrayList<Integer> al=new ArrayList<Integer>();
         arr.add(1);
         arr.add(2);
-        arr.add(3);
+        arr.add(2);
+        arr.add(5);
+        arr.add(1);
+        arr.add(1);
         int s=0;
-        System.out.println(subsequence(0,arr,s,3));
+        subsequence(0,arr,al,s,5);
     }
-    public static int subsequence(int ind,ArrayList<Integer> arr,int s,int sum)
+    public static void subsequence(int ind,ArrayList<Integer> arr,ArrayList<Integer> al,int s,int sum)
     {
         if(ind>=arr.size())
         {
             if(s==sum)
             {
-                return 1;
+                System.out.println(al);
             }
-            return 0;
+            return;
         }
+        al.add(arr.get(ind));
         s+=arr.get(ind);
-        int l=subsequence(ind+1,arr,s,sum);
+        subsequence(ind+1,arr,al,s,sum);
+        al.remove(arr.get(ind));
         s-=arr.get(ind);
-        int r=subsequence(ind+1,arr,s,sum);
-        return l+r; 
+        subsequence(ind+1,arr,al,s,sum);
+        
     }
 }
