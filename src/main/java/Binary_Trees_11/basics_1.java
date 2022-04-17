@@ -89,6 +89,67 @@ public class basics_1
         return finall;
     }
     
+    public static List<Integer> iterativePreOrder(Node root)
+    {
+        List<Integer> list=new ArrayList<>();
+        Stack<Node> stack=new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty())
+        {
+            Node temp=stack.pop();
+            if(temp.right!=null)
+                stack.push(temp.right);
+            if(temp.left!=null)
+                stack.push(temp.left);
+            list.add(temp.data);
+        }
+        return list;
+    }
+    
+    public static List<Integer> iterativeInOrder(Node root)
+    {
+        List<Integer> list=new ArrayList<>();
+        Stack<Node> stack=new Stack<>();
+        Node node=root;
+        while(true)
+        {
+            if(node!=null)
+            {
+                stack.push(node);
+                node=node.left;
+            }
+            else{
+                if(stack.isEmpty())
+                    break;
+                node=stack.pop();
+                list.add(node.data);
+                node=node.right;
+            }
+        }
+        return list;
+    }
+    
+    public static List<Integer> iterativePostOrder(Node root)
+    {
+        Stack<Node> st1=new Stack<>();
+        Stack<Node> st2=new Stack<>();
+        List<Integer> list=new ArrayList<>();
+        if(root==null)
+            return list;
+        while(!st1.isEmpty()){
+            root=st1.pop();
+            st2.push(root);
+            if(root.left!=null)
+                st1.push(root.left);
+            if(root.right!=null)
+                st1.push(root.right);
+        }
+        while(!st2.isEmpty()){
+            list.add(st2.pop().data);
+        }
+        return list;
+    }
+    
     public static void main(String[] args)
     {
         int nodes[]={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};           //         1 
@@ -112,7 +173,22 @@ public class basics_1
         
         System.out.print("Levelorder:");
         List<List<Integer>> list=levelorder(root);
-        System.out.println(list);
+        System.out.print(list);
+        System.out.println();
+        
+        System.out.print("IterativePreorder:");
+        List<Integer> list1=iterativePreOrder(root);
+        System.out.print(list1);
+        System.out.println();
+        
+        System.out.print("IterativeInorder:");
+        List<Integer> list2=iterativeInOrder(root);
+        System.out.print(list2);
+        System.out.println();
+        
+        System.out.print("IterativePostorder:");
+        List<Integer> list3=iterativePostOrder(root);
+        System.out.print(list3);
         System.out.println();
     }
 }
